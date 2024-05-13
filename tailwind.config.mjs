@@ -20,6 +20,15 @@ export default {
 				},
 			}
 		},
+		container: {
+			center: true,
+			padding: {
+        DEFAULT: '2rem',
+        lg: '4rem',
+        xl: '8rem',
+        '2xl': '14rem',
+      },
+		},
 	},
 	plugins: [],
 }
