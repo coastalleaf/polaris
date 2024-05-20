@@ -1,47 +1,26 @@
-# Astro Starter Kit: Minimal
+# Polaris - Marketing Website Template
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Polaris is a project template designed for building marketing websites using Astro and Tailwind CSS, intended for deployment on Cloudflare. This repository provides a foundational setup to streamline the creation of new marketing websites with pre-configured tools and customizations.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Basic Page Scaffolds**: Includes a 404 page and a basic layout for HTML architecture.
+- **Tailwind Customizations**:
+  - Custom colors
+  - Container settings
+  - Custom fonts
+  - Typographic sizing for website headings
+- **Setup Script**: Automates the creation of a new project based on the Polaris template.
 
-## 🚀 Project Structure
+## Setup Script
 
-Inside of your Astro project, you'll see the following folders and files:
+The `polaris.sh` script automates the process of creating a new project from the Polaris template.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### How to Use the Script
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. **Create a New Repository**: Manually create a new empty repository on GitLab.
+2. **Run the Script**:
+   - Save the `polaris.sh` script to your local machine.
+   - Make the script executable: `chmod +x polaris.sh`
+   - Execute the script with your desired project name: `./polaris.sh your-new-project-name`
+   - Replace `your-new-project-name` with the name of your new project.
