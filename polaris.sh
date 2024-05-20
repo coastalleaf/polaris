@@ -30,6 +30,9 @@ git branch -m master main
 # Add the new remote origin
 git remote add origin $NEW_PROJECT_REPO_URL
 
+# Remove the Polaris script
+rm -f polaris.sh
+
 # Add all files
 git add .
 
