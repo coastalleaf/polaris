@@ -1,0 +1,16 @@
+---
+interface Props {
+  href: string;
+  text: string;
+}
+
+const { text, href } = Astro.props;
+const currentPath = Astro.url.pathname;
+const activeClass = currentPath === href ? "text-orange-500" : "text-white";
+---
+
+<a
+  href={href}
+  class:list={["text-white transition hover:text-orange-300", activeClass]}
+  >{text}</a
+>
