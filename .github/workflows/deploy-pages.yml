@@ -1,0 +1,50 @@
+name: Deploy Cloudflare Pages
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+    tags:
+      - "v*.*.*" # This pattern matches version tags like v1.0.0, v2.1.0, etc.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set environment variables
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ] && [ "${{ github.base_ref }}" == "main" ]; then
+            echo "ENVIRONMENT=development" >> $GITHUB_ENV
+            echo "PAGES_DEPLOY_URL=https://dev.coastalleaf.co" >> $GITHUB_ENV
+            echo "OPT=--branch dev" >> $GITHUB_ENV
+          elif [ "${{ github.event_name }}" == "push" ]; then
+            if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+              echo "ENVIRONMENT=staging" >> $GITHUB_ENV
+              echo "PAGES_DEPLOY_URL=https://staging.coastalleaf.co" >> $GITHUB_ENV
+              echo "OPT=--branch staging" >> $GITHUB_ENV
+            elif [[ "${{ github.ref_type }}" == "tag" ]]; then
+              echo "ENVIRONMENT=production" >> $GITHUB_ENV
+              echo "PAGES_DEPLOY_URL=https://coastalleaf.co" >> $GITHUB_ENV
+              echo "OPT=--branch main" >> $GITHUB_ENV
+            fi
+          fi
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies and deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npm ci
+          npx astro build
+          npx wrangler pages deploy --project-name coastalleaf $OPT ./dist
