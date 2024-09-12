@@ -10,4 +10,3 @@ Polaris is a project template designed for building marketing websites using Ast
   - Container settings
   - Custom fonts
   - Typographic sizing for website headings
-- **Setup Script**: Automates the creation of a new project based on the Polaris template.
